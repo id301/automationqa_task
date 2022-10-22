@@ -1,7 +1,5 @@
 {
-  "web": {
     "baseUrl": "qa.digift.ru/",
     "login": "HR",
     "password": "test"
-  }
 }
