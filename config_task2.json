@@ -1,0 +1,6 @@
+{
+    "baseUrl": "https://www.lenvendo.ru/api/",
+    "method": "js-test-task/",
+    "search": "search=",
+    "sort_field": "sort_field="
+}
