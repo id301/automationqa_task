@@ -7,7 +7,7 @@ from fixture.task1.application import Application
 from fixture.task2.api_requests import ApiRequests
 
 
-@pytest.fixture
+@pytest.fixture(scope='session')
 def app_task1(request):
     config = load_confing_task1()
     fixture = Application(config['baseUrl'])
@@ -24,7 +24,7 @@ def load_confing_task1():
     return config
 
 
-@pytest.fixture
+@pytest.fixture(scope='session')
 def setup_task2():
     config = load_confing_task2()
     fixture = ApiRequests(config)
