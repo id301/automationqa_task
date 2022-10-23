@@ -8,6 +8,6 @@ def test_api(setup_task2):
     2. Все элементы в ответе отсортированы по полю 'name' в алфавитном порядке"""
     products = setup_task2.get_products(search='Alcatel', sort_field='name')
     for product in products:
-        assert product.name.count('Alcatel') > 0
+        assert product.name.count('sdfasd') > 0, f'Поле name не содержит значение "Alcatel" в элементе: {product}'
     names = [x.name for x in products]
-    assert names == sorted(names)
+    assert names == sorted(names), 'Элементы в ответе не отсортированы по полю name в алфавитном порядке'
