@@ -1,8 +1,8 @@
 __author__ = 'id301'
 
 from selenium import webdriver
-from fixture.session import Session
-from fixture.nominal_div import NominalDiv
+from fixture.task1.session import Session
+from fixture.task1.nominal_div import NominalDiv
 
 class Application:
 
