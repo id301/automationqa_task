@@ -1,7 +1,7 @@
 __author__ = 'id301'
 
 import requests
-from model.js_test_task import JsTestTask
+from task2.model.js_test_task import JsTestTask
 
 
 class ApiRequests:
@@ -17,7 +17,6 @@ class ApiRequests:
         search_text = (self.search_param + search) if search != '' else ''
         sort_field_text = (self.sort_field_param + sort_field) if sort_field else ''
         response = requests.get(f'{self.base_url}{self.js_test_task_method}?{search_text}&{sort_field_text}')
-        print(f'{self.base_url}{self.js_test_task_method}?{search_text}&{sort_field_text}')
         lst_models = []
         for product in response.json()['products']:
             lst_models.append(JsTestTask.parse_obj(product))

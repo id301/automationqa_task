@@ -1,7 +1,7 @@
 __author__ = 'id301'
 
 import allure
-from fixture.task1.pages.main_page import MainPage
+from task1.pages.main_page import MainPage
 
 
 @allure.feature('Кнопки с номиналом карты')

@@ -4,8 +4,8 @@ import pytest
 import json
 import os.path
 from selenium import webdriver
-from fixture.task2.api_requests import ApiRequests
-from utils import Session
+from task2.api_requests import ApiRequests
+from task1.utils import Session
 
 
 @pytest.fixture(scope='session')
@@ -18,12 +18,6 @@ def browser():
 def session():
     return Session()
 
-def load_confing_task1():
-    config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config_task1.json')
-    with open(config_file) as f:
-        config = json.load(f)
-    return config
-
 
 @pytest.fixture(scope='session')
 def setup_task2():
@@ -32,7 +26,7 @@ def setup_task2():
     return fixture
 
 def load_confing_task2():
-    config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config_task2.json')
+    config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'task2/config_task2.json')
     with open(config_file) as f:
         config = json.load(f)
     return config
