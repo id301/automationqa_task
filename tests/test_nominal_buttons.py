@@ -1,16 +1,18 @@
 __author__ = 'id301'
 
 import allure
+from fixture.task1.pages.main_page import MainPage
+
 
 @allure.feature('Кнопки с номиналом карты')
-def test_nominal_buttons(app_task1):
+def test_nominal_buttons(browser, session):
+    main_page = MainPage(browser, session.BASE_URL)
+    main_page.open_with_basic_auth(session.LOGIN, session.PASSWORD)
     with allure.step('Для каждой кнопки с номиналом'):
-        for button in app_task1.nominal_div.get_buttons():
-            button_value = app_task1.nominal_div.get_button_value(button)
-            with allure.step(f'Кнопка с номиналом {button_value}: Нажатие на кнопку'):
-                app_task1.nominal_div.click_button(button)
-            with allure.step(f'Кнопка с номиналом {button_value}: Сравнение с номиналом в поле "Введите"'):
-                assert button_value == app_task1.nominal_div.get_input_value(), f'Значение номинала кнопки {button_value} ' \
-                                f'не соответствует номиналу в поле "Введите" {app_task1.nominal_div.get_input_value()}'
-            with allure.step(f'Кнопка с номиналом {button_value}: Проверка состояния "активности" кнопки'):
-                assert app_task1.nominal_div.is_button_active(button), f'Кнопка с номиналом {button_value} не является активной'
+        for button in main_page.get_nominal_buttons():
+            with allure.step(f'Кнопка с номиналом {main_page.get_nominal_button_value(button)}: Нажатие на кнопку'):
+                main_page.click_button(button)
+            with allure.step(f'Кнопка с номиналом {main_page.get_nominal_button_value(button)}: Сравнение с номиналом в поле "Введите"'):
+                main_page.check_input_equals_nominal_button()
+            with allure.step(f'Кнопка с номиналом {main_page.get_nominal_button_value(button)}: Проверка состояния "активности" кнопки'):
+                main_page.check_is_button_active(button)
